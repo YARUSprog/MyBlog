@@ -1,0 +1,28 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="content">
+    <h2>Cписок пользователей</h2>
+    <c:if test="${info ne null}">
+        <div class="success">${info}</div>
+    </c:if>    
+    <!--<a href="admin_page?content_id=add_user"><img class="add_some" src="images/add_page.jpg" alt="добавить пользователя" /></a>-->
+    <table class="tabl" cellspacing="1">
+        <tr>
+            <!--<th class="number">№</th>-->
+            <th class="str_name">Логин</th>     
+            <th class="str_name">Группа</th>      
+            <th class="str_action">Действие</th>
+        </tr>
+        <c:forEach var="user" items="${users}">
+            <article>
+                <tr>
+                    <!--<td></td>-->
+                    <td class="name_page">${user.login}</td>                            
+                    <td class="name_page">${user.groupUser.name}</td>                            
+                    <td><a href="admin_page?command=loadForEditUser&user_id=${user.login}&content_id=edit_user" class="edit">изменить</a>&nbsp; | &nbsp;<a href="admin_page?command=delete_user&user_id=${user.login}&content_id=admin_user-list" class="del">удалить</a></td>
+                </tr>
+            </article>
+        </c:forEach>                 
+    </table>
+    <!--<a href="?content_id=add_user"><img class="add_some" src="images/add_page.jpg" alt="добавить пользователя" /></a>-->
+</div> <!-- .content -->

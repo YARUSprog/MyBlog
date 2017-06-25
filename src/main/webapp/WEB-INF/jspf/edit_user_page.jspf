@@ -1,0 +1,41 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="content">
+    <h2>Добавление пользователя</h2>
+    <c:if test="${error ne null}">
+        <div class="error">${error}</div>
+    </c:if>
+    <form action="admin_page" method="post">
+        <input type="hidden" name="command" value="edit_user" />
+        <input type="hidden" name="user_id" value="${user.login}" />
+        <table class="add_edit_page" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="add-edit-txt">Логин:</td>
+                <td>${user.login}<!--<input class="head-text" type="text" name="login" value="${user.login}" />--></td>
+            </tr>            
+            <tr>
+                <td class="add-edit-txt">Пароль:</td>
+                <td><input class="head-text" type="password" name="password" value="${user.pass}" /></td>
+            </tr>
+            <!--<c:forEach var="contact" items="${contacts}">
+                <tr>
+                    <td class="add-edit-txt">${contact.name}:</td>
+                    <td><input class="head-text" type="text" name="e-mail" value="${contact.value}" /></td>
+                </tr>
+            </c:forEach>   -->
+            <tr>
+                <td class="add-edit-txt">Группа:</td>
+                <td>
+                    <!--<input class="head-text" type="text" name="e-mail" value="" />-->
+                    <select class="head-text" name="groupUser">
+                        <option name="selectGroup" value="${user.groupUser.name}">${user.groupUser.name}</option>
+                        <c:forEach var="group" items="${groups}">
+                            <option name="selectGroup" value="${group.name}">${group.name}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="image" src="images/save_btn.jpg"/> 
+    </form>
+</div> <!-- .content -->

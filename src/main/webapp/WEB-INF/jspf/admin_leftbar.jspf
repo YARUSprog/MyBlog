@@ -1,0 +1,8 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="leftBar">
+    <ul class="nav-left">
+        <li><a href="#" class="nav-activ">Статьи</a></li>
+        <li><a href="#">Пользователи</a></li>                                            
+    </ul>
+</div> <!-- .leftBar -->

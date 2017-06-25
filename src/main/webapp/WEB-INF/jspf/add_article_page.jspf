@@ -1,0 +1,57 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="content">
+    <h2>Добавление статьи</h2>
+    <c:if test="${error ne null}">
+        <div class="error">${error}</div>
+    </c:if> 
+    <form action="admin_page" method="post">
+        <input type="hidden" name="command" value="add_article" />
+        <input type="hidden" name="article_id" value="" />
+        <table class="add_edit_page" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="add-edit-txt">Название статьи:</td>
+                <td><input class="head-text" type="text" name="title" value="" /></td>
+            </tr>            
+            <tr>
+                <td>Содержание статьи:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea id="editor1" class="full-text" name="text"></textarea>
+                    <script type="text/javascript">
+                        CKEDITOR.replace('editor1');
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td class="add-edit-txt">Дата:</td>
+                <td><input class="head-text" type="date" name="date" value="" /></td>                
+            </tr>
+            <tr>
+                <td class="add-edit-txt">Категория:</td>
+                <td>
+                    <!--<input class="head-text" type="text" name="theme" value="" />                    -->
+                    <div class="select-editable">
+                        <select onchange="this.nextElementSibling.value = this.value">                            
+                            <c:forEach var="theme1" items="${themes}">
+                                <option value="${theme1}">${theme1}</option>
+                            </c:forEach>
+                        </select>
+                        <input type="text" name="theme" value=""/>
+                    </div>                    
+                </td>
+                <!--<td>
+                    <select name="theme">
+                        <c:forEach var="theme1" items="${themes}">
+                            <option value="">${theme1}</option>
+                        </c:forEach>
+                    </select>
+                </td>-->
+            </tr>
+        </table>
+        <input type="image" src="images/save_btn.jpg"/> 
+    </form>
+</div> <!-- .content -->
+

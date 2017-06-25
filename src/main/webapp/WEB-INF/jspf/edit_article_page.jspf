@@ -1,0 +1,49 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="content">
+    <h2>Редактирование статьи</h2>        
+    <c:if test="${error ne null}">
+        <div class="error">${error}</div>
+    </c:if>    
+    <form action="admin_page" method="post">
+        <input type="hidden" name="command" value="edit_article" />
+        <input type="hidden" name="article_id" value="${article.id}" />
+        <table class="add_edit_page" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="add-edit-txt">Название статьи:</td>
+                <td><input class="head-text" type="text" name="title" value="${article.title}" /></td>
+            </tr>            
+            <tr>
+                <td>Содержание статьи:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea id="editor1" class="full-text" name="text">${article.text}</textarea>
+                    <script type="text/javascript">
+                        CKEDITOR.replace('editor1');
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td class="add-edit-txt">Дата:</td>
+                <td><input class="head-text" type="date" name="date" value="${article.date}" /></td>
+            </tr>
+            <tr>
+                <td class="add-edit-txt">Категория:</td>
+                <td>
+                    <!--<input class="head-text" type="text" name="theme" value="${article.theme}" />-->
+                    <div class="select-editable">
+                        <select onchange="this.nextElementSibling.value = this.value">                            
+                            <c:forEach var="theme1" items="${themes}">
+                                <option value="${theme1}">${theme1}</option>
+                            </c:forEach>
+                        </select>
+                        <input type="text" name="theme" value="${article.theme}"/>
+                    </div>                    
+                </td>
+            </tr>
+        </table>
+        <input type="image" src="images/save_btn.jpg"/> 
+    </form>
+</div> <!-- .content -->

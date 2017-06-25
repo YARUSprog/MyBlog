@@ -1,0 +1,39 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="content">
+    <h2>Добавление пользователя</h2>
+    <form action="admin_page?content_id=admin_user-list" method="post">
+        <input type="hidden" name="command" value="add_user" />
+        <input type="hidden" name="article_id" value="" />
+        <table class="add_edit_page" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="add-edit-txt">Логин:</td>
+                <td><input class="head-text" type="text" name="login" value="" /></td>
+            </tr>            
+            <tr>
+                <td class="add-edit-txt">Пароль:</td>
+                <td><input class="head-text" type="password" name="password" value="" /></td>
+            </tr>
+            <tr>
+                <td class="add-edit-txt">Пароль повторно:</td>
+                <td><input class="head-text" type="password" name="password" value="" /></td>
+            </tr>
+            <tr>
+                <td class="add-edit-txt">e-mail:</td>
+                <td><input class="head-text" type="text" name="e-mail" value="" /></td>
+            </tr>
+            <tr>
+                <td class="add-edit-txt">Группа:</td>
+                <td>
+                    <!--<input class="head-text" type="text" name="e-mail" value="" />-->
+                    <select class="head-text" name="groupUser">
+                        <c:forEach var="group" items="${groups}">
+                            <option name="selectDate" value="${group.name}">${group.name}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="image" src="images/save_btn.jpg"/> 
+    </form>
+</div> <!-- .content -->

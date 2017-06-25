@@ -1,0 +1,26 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="content">
+    <h2>Cписок статей</h2>
+    <c:if test="${info ne null}">
+        <div class="success">${info}</div>
+    </c:if>    
+    <a href="admin_page?content_id=add_article"><img class="add_some" src="images/add_page.jpg" alt="добавить страницу" /></a>
+    <table class="tabl" cellspacing="1">
+        <tr>
+            <th class="number">№</th>
+            <th class="str_name">Название статьи</th>                            
+            <th class="str_action">Действие</th>
+        </tr>
+        <c:forEach var="article" items="${articles}">
+            <article>
+                <tr>
+                    <td>${article.id}</td>
+                    <td class="name_page">${article.title}</td>                            
+                    <td><a href="admin_page?command=load_article&article_id=${article.id}&content_id=edit_article" class="edit">изменить</a>&nbsp; | &nbsp;<a href="admin_page?command=delete_article&article_id=${article.id}&content_id=admin_article-list" class="del">удалить</a></td>
+                </tr>
+            </article>
+        </c:forEach>        
+    </table>
+    <a href="admin_page?content_id=add_article"><img class="add_some" src="images/add_page.jpg" alt="добавить страницу" /></a>
+</div> <!-- .content -->
